@@ -32,6 +32,7 @@ public class PostService {
 
         User createUser = userService.findById(post.getUserId());
         PostVo postVo = new PostVo();
+        postVo.setPostId(postId);
         postVo.setContent(post.getContent());
         postVo.setAuthor(createUser);
         postVo.setImage(post.getImage());
@@ -59,11 +60,11 @@ public class PostService {
     {
         ApiResponse<String> response = new ApiResponse<>();
         Post newPost = Post.builder()
-                .content(postCreateRequest.getContent())
-                .userId(user.getId())
-                .createdAt(LocalDateTime.now())
-                .image(postCreateRequest.getImage())
-                .build();
+            .content(postCreateRequest.getContent())
+            .userId(user.getId())
+            .createdAt(LocalDateTime.now())
+            .image(postCreateRequest.getImage())
+            .build();
         postRepository.save(newPost);
         response.setStatus(ApiResponse.Status.SUCCESS);
         return response;
