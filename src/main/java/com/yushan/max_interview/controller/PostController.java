@@ -48,6 +48,14 @@ public class PostController {
             java.security.Principal principal) {
         String username = principal.getName();
         User user = userService.findByUserName(username);
-        return postService.createPost(postCreateRequest,user);
+        return postService.createPost(postCreateRequest, user);
+    }
+
+    @PostMapping("/editPost")
+    public ApiResponse<Post> editPost(@RequestBody PostEditRequest postEditRequest,
+            java.security.Principal principal) {
+        String username = principal.getName();
+        User user = userService.findByUserName(username);
+        return postService.editPost(postEditRequest, user);
     }
 }
