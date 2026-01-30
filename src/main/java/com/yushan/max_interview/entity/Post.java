@@ -2,6 +2,9 @@ package com.yushan.max_interview.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -27,5 +30,5 @@ public class Post {
     private String image; // 貼文圖片路徑
 
     @Column(name = "created_at", insertable = false, updatable = false)
-    private Date createdAt; // 建立時間
+    private LocalDateTime createdAt; // 建立時間
 }

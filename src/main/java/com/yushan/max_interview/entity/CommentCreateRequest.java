@@ -1,24 +1,10 @@
 package com.yushan.max_interview.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
-@Entity
-@Table(name = "comment")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-public class Comment {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id; // 留言ID (Primary Key)
-
+public class CommentCreateRequest {
     @Column(name = "user_id", nullable = false)
     private Long userId; // 留言者 (Foreign Key)
 
