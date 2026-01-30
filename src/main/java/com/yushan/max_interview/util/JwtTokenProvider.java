@@ -1,5 +1,7 @@
 package com.yushan.max_interview.util;
 
+import com.yushan.max_interview.entity.User;
+
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
@@ -18,12 +20,17 @@ public class JwtTokenProvider {
         return Keys.hmacShaKeyFor(secretString.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String createToken(String username) {
+    public String createToken(User user) {
         Date now = new Date();
         Date validity = new Date(now.getTime() + validityInMilliseconds);
 
         return Jwts.builder()
-                .subject(username)
+                .subject("yushan")
+                .claim("id", user.getId())
+                .claim("userName", user.getUserName())
+                .claim("email", user.getEmail())
+                .claim("coverImage", user.getCoverImage())
+                .claim("biography", user.getBiography())
                 .issuedAt(now)
                 .expiration(validity)
                 .signWith(getSigningKey())

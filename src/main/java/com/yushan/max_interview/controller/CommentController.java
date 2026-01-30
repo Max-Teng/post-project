@@ -17,7 +17,7 @@ public class CommentController {
     private final CommentService commentService;
 
     @PostMapping("/createComment")
-    public ApiResponse<String> createPost(@RequestBody PostCreateRequest postCreateRequest) {
+    public ApiResponse<String> createComment(@RequestBody PostCreateRequest postCreateRequest) {
 
 
     }

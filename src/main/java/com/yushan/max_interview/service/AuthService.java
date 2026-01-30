@@ -40,7 +40,7 @@ public class AuthService {
         ApiResponse<String> apiResponse = new ApiResponse<>();
         User user = userRepository.findByUserName(request.getUserName());
         if (user != null && passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-            String token = jwtTokenProvider.createToken(request.getUserName());
+            String token = jwtTokenProvider.createToken(user);
             apiResponse.setStatus(ApiResponse.Status.SUCCESS);
             apiResponse.setData(token);
             return apiResponse;
