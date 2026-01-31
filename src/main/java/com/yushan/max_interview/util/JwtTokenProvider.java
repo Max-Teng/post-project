@@ -43,7 +43,7 @@ public class JwtTokenProvider {
                 .build()
                 .parseSignedClaims(token)
                 .getPayload()
-                .getSubject();
+                .get("userName", String.class);
     }
 
     public boolean validateToken(String token) {
