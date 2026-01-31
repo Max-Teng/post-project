@@ -25,10 +25,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        // 1. Get Token from Header (Authorization: Bearer <token>)
         String token = resolveToken(request);
 
-        // 2. Validate
         if (token != null && jwtTokenProvider.validateToken(token)) {
             String username = jwtTokenProvider.getUsername(token);
             UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null,

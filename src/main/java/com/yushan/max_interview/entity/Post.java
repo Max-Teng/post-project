@@ -19,10 +19,10 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long id; // 貼文ID (Primary Key)
+    private Long id;
 
     @Column(name = "user_id", nullable = false)
-    private Long userId; // 發文者 (Foreign Key)
+    private Long userId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
@@ -30,11 +30,11 @@ public class Post {
     private User author;
 
     @Column(name = "content", nullable = false, columnDefinition = "TEXT")
-    private String content; // 貼文內容
+    private String content;
 
     @Column(name = "image")
-    private String image; // 貼文圖片路徑
+    private String image;
 
     @Column(name = "created_at", insertable = false, updatable = false)
-    private LocalDateTime createdAt; // 建立時間
+    private LocalDateTime createdAt;
 }

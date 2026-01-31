@@ -7,7 +7,7 @@ import lombok.Data;
 public class PostCreateRequest {
 
     @NotBlank(message = "content cant be null")
-    private String content; // 貼文內容
+    private String content;
 
-    private String image; // 貼文圖片路徑
+    private String image;
 }

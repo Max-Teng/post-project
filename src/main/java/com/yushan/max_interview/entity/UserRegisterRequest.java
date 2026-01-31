@@ -9,7 +9,7 @@ import lombok.Data;
 public class UserRegisterRequest {
 
     @NotBlank(message = "手機號碼不能為空")
-    @Pattern(regexp = "^09\\d{8}$", message = "手機號碼格式錯誤") // 驗證台灣手機格式
+    @Pattern(regexp = "^09\\d{8}$", message = "手機號碼格式錯誤")
     private String phoneNumber;
 
     @Email(message = "Email 格式錯誤")

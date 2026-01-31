@@ -7,9 +7,9 @@ public class PostVo {
 
     private Long postId;
 
-    private String content; // 貼文內容
+    private String content;
 
-    private String image; // 貼文圖片路徑
+    private String image;
 
     private User author;
 }

@@ -27,13 +27,11 @@ public class FileController {
         }
 
         try {
-            // Create directory if not exists
             File directory = new File(uploadDir);
             if (!directory.exists()) {
                 directory.mkdirs();
             }
 
-            // Generate unique filename
             String originalFilename = file.getOriginalFilename();
             String extension = "";
             if (originalFilename != null && originalFilename.contains(".")) {
@@ -41,12 +39,9 @@ public class FileController {
             }
             String newFilename = UUID.randomUUID() + extension;
 
-            // Save file
             File dest = new File(directory.getAbsolutePath() + File.separator + newFilename);
             file.transferTo(dest);
 
-            // Return URL
-            // Assuming the app runs on localhost:8080, and we map /images/** to this folder
             String fileUrl = "http://localhost:8080/images/" + newFilename;
 
             response.setData(fileUrl);

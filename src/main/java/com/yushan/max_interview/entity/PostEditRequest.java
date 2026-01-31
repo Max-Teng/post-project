@@ -8,10 +8,10 @@ import lombok.Data;
 public class PostEditRequest {
 
     @NotNull(message = "id cant be null")
-    private Long postId; // 貼文ID
+    private Long postId;
 
     @NotBlank(message = "content cant be null")
-    private String content; // 貼文內容
+    private String content;
 
-    private String image; // 貼文圖片路徑
+    private String image;
 }
