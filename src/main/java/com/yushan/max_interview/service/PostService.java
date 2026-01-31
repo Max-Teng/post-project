@@ -4,6 +4,7 @@ import com.yushan.max_interview.entity.*;
 import com.yushan.max_interview.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -49,6 +50,7 @@ public class PostService {
         return postDetailVo;
     }
 
+    @Transactional
     public void deletePostById(Long postId) {
         postRepository.deleteById(postId);
     }
