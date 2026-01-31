@@ -14,7 +14,7 @@
               v-model="form.userName"
               type="text"
               class="form-input"
-              placeholder="請輸入使用者名稱"
+              placeholder="請輸入電話號碼"
               required
             />
           </div>

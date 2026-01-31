@@ -29,8 +29,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**", "/file/**", "/images/**", "/post/getAllPost",
                                 "/post/getPostDetail", "/", "/index.html", "/assets/**", "/*.js", "/*.css",
-                                "/*.ico", "/*.svg")
+                                "/*.ico", "/*.svg", "/login", "/register")
                         .permitAll()
+                        .requestMatchers(org.springframework.http.HttpMethod.GET, "/post/**").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
