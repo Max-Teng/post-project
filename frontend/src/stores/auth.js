@@ -5,7 +5,10 @@ import { getToken, setToken, removeToken, getCurrentUser, isLoggedIn as checkLog
 export const useAuthStore = defineStore('auth', () => {
     const user = ref(getCurrentUser())
 
-    const isLoggedIn = computed(() => checkLoggedIn())
+    // Make isLoggedIn reactive by depending on user.value
+    const isLoggedIn = computed(() => {
+        return !!user.value && checkLoggedIn()
+    })
 
     function login(token) {
         setToken(token)
