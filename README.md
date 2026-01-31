@@ -10,6 +10,8 @@ post project
 * SQLite
 ## 啟動步驟 (with cmd)
 * cd {yourFolder}
-* git clone https://github.com/yushan-max/max-interview.git
+* git clone https://github.com/Max-Teng/post-project.git
+* cd post-project
+* git checkout master
 * mvnw spring-boot:run
 * visit http://localhost:8080
