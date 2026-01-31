@@ -5,6 +5,7 @@ import com.yushan.max_interview.service.PostService;
 import com.yushan.max_interview.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class PostController {
     }
 
     @PostMapping("/createPost")
-    public ApiResponse<String> createPost(@RequestBody PostCreateRequest postCreateRequest,
+    public ApiResponse<String> createPost(@Valid @RequestBody PostCreateRequest postCreateRequest,
             java.security.Principal principal) {
         String username = principal.getName();
         User user = userService.findByUserName(username);
@@ -52,7 +53,7 @@ public class PostController {
     }
 
     @PostMapping("/editPost")
-    public ApiResponse<Post> editPost(@RequestBody PostEditRequest postEditRequest,
+    public ApiResponse<Post> editPost(@Valid @RequestBody PostEditRequest postEditRequest,
             java.security.Principal principal) {
         String username = principal.getName();
         User user = userService.findByUserName(username);
