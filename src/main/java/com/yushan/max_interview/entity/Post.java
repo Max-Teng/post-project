@@ -2,6 +2,7 @@ package com.yushan.max_interview.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,6 +23,11 @@ public class Post {
 
     @Column(name = "user_id", nullable = false)
     private Long userId; // 發文者 (Foreign Key)
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    @JsonIgnoreProperties({ "password", "email" })
+    private User author;
 
     @Column(name = "content", nullable = false, columnDefinition = "TEXT")
     private String content; // 貼文內容

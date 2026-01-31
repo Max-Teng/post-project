@@ -4,6 +4,16 @@
       <button class="btn btn-secondary back-btn" @click="goBack">
         ← 返回
       </button>
+
+      <ConfirmModal
+        v-if="showDeleteModal"
+        title="刪除貼文"
+        message="確定要刪除這篇貼文嗎？刪除後無法恢復。"
+        confirm-text="確認刪除"
+        cancel-text="取消"
+        @confirm="confirmDelete"
+        @cancel="showDeleteModal = false"
+      />
       
       <div v-if="loading" class="loading-state">
         <div class="spinner"></div>
@@ -89,6 +99,7 @@ import { useAuthStore } from '../stores/auth'
 import { useToastStore } from '../stores/toast'
 import CommentItem from '../components/CommentItem.vue'
 import CommentBox from '../components/CommentBox.vue'
+import ConfirmModal from '../components/ConfirmModal.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -99,6 +110,7 @@ const postId = computed(() => route.params.id)
 const postDetail = ref(null)
 const loading = ref(true)
 const deleting = ref(false)
+const showDeleteModal = ref(false)
 const defaultAvatar = 'https://ui-avatars.com/api/?name=User&background=6366f1&color=fff'
 
 const isOwner = computed(() => {
@@ -125,7 +137,11 @@ async function fetchPostDetail() {
 }
 
 async function handleDelete() {
-  if (!confirm('確定要刪除這篇貼文嗎？')) return
+  showDeleteModal.value = true
+}
+
+async function confirmDelete() {
+  showDeleteModal.value = false
   
   deleting.value = true
   try {
