@@ -8,3 +8,8 @@ post project
 * Spring Boot
 * Vue.js
 * SQLite
+## 啟動步驟 (with cmd)
+* cd {yourFolder}
+* git clone https://github.com/yushan-max/max-interview.git
+* mvnw spring-boot:run
+* visit http://localhost:8080
